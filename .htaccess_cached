@@ -1,0 +1,77 @@
+# BEGIN CACHIFY
+<IfModule mod_rewrite.c>
+	# ENGINE ON
+	RewriteEngine On
+ 
+	# GZIP FILE
+	<IfModule mod_mime.c>
+		# no SSL
+		RewriteCond %{HTTPS} off
+		RewriteCond %{REQUEST_URI} /$
+		RewriteCond %{REQUEST_URI} !^/wp-admin/.*
+		RewriteCond %{REQUEST_METHOD} !=POST
+		RewriteCond %{QUERY_STRING} =""
+		RewriteCond %{HTTP_COOKIE} !(wp-postpass|wordpress_logged_in|comment_author)_
+		RewriteCond %{HTTP:Accept-Encoding} gzip
+		RewriteCond %{DOCUMENT_ROOT}/wp-content/cache/cachify/%{HTTP_HOST}%{REQUEST_URI}index.html.gz -f
+		RewriteRule ^(.*) /wp-content/cache/cachify/%{HTTP_HOST}%{REQUEST_URI}index.html.gz [L]
+ 
+		# SSL enabled
+		RewriteCond %{HTTPS} on
+		RewriteCond %{REQUEST_URI} /$
+		RewriteCond %{REQUEST_URI} !^/wp-admin/.*
+		RewriteCond %{REQUEST_METHOD} !=POST
+		RewriteCond %{QUERY_STRING} =""
+		RewriteCond %{HTTP_COOKIE} !(wp-postpass|wordpress_logged_in|comment_author)_
+		RewriteCond %{HTTP:Accept-Encoding} gzip
+		RewriteCond %{DOCUMENT_ROOT}/wp-content/cache/cachify/https-%{HTTP_HOST}%{REQUEST_URI}index.html.gz -f
+		RewriteRule ^(.*) /wp-content/cache/cachify/https-%{HTTP_HOST}%{REQUEST_URI}index.html.gz [L]
+ 
+		AddType text/html .gz
+		AddEncoding gzip .gz
+	</IfModule>
+ 
+	# HTML FILE
+	# no SSL
+ 	RewriteCond %{HTTPS} off
+	RewriteCond %{REQUEST_URI} /$
+	RewriteCond %{REQUEST_URI} !^/wp-admin/.*
+	RewriteCond %{REQUEST_METHOD} !=POST
+	RewriteCond %{QUERY_STRING} =""
+	RewriteCond %{HTTP_COOKIE} !(wp-postpass|wordpress_logged_in|comment_author)_
+	RewriteCond %{DOCUMENT_ROOT}/wp-content/cache/cachify/%{HTTP_HOST}%{REQUEST_URI}index.html -f
+	RewriteRule ^(.*) /wp-content/cache/cachify/%{HTTP_HOST}%{REQUEST_URI}index.html [L]
+
+	# SSL enabled
+ 	RewriteCond %{HTTPS} on
+ 	RewriteCond %{REQUEST_URI} /$
+ 	RewriteCond %{REQUEST_URI} !^/wp-admin/.*
+ 	RewriteCond %{REQUEST_METHOD} !=POST
+ 	RewriteCond %{QUERY_STRING} =""
+ 	RewriteCond %{HTTP_COOKIE} !(wp-postpass|wordpress_logged_in|comment_author)_
+	RewriteCond %{DOCUMENT_ROOT}/wp-content/cache/cachify/https-%{HTTP_HOST}%{REQUEST_URI}index.html -f
+ 	RewriteRule ^(.*) /wp-content/cache/cachify/https-%{HTTP_HOST}%{REQUEST_URI}index.html [L]
+</IfModule>
+# END CACHIFY
+<IfModule mod_expires.c>
+    <FilesMatch ".(html|html.gz|jpg|jpg.gz|css|css.gz|png|png.gz|js|js.gz)$">
+        ExpiresActive On
+        ExpiresDefault "access plus 30 days"
+    </FilesMatch>
+</IfModule>
+<IfModule mod_headers.c>
+   <FilesMatch "\.(js|css|xml|gz)$">
+     Header append Vary: Accept-Encoding
+   </FilesMatch>
+</IfModule>
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress

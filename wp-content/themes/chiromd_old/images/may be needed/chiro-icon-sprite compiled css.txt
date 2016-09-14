@@ -1,0 +1,37 @@
+/* Note: class names correspond with single image names used before sprite */
+
+.icon { background: url(icon-sprite.png) no-repeat top left; width: 91px; height: 106px;  } 
+.icon.icon-phone-tiny { background-position: 0 0; width: 31px; height: 38px; } 
+.icon.icon-phone-small { background-position: -51px 0; width: 47px; height: 54px; } 
+.icon.icon-phone-big { background-position: -118px 0; } 
+.icon.icon-phone-tiny-hover { background-position: -229px 0; width: 31px; height: 38px; } 
+.icon.icon-phone-medium-hover { background-position: -280px 0; width: 68px; height: 80px; } 
+.icon.icon-phone-big-hover { background-position: -368px 0; } 
+.icon.icon-bell-tiny { background-position: -479px 0; width: 31px; height: 38px; } 
+.icon.icon-bell-big { background-position: -530px 0; } 
+.icon.icon-bell-tiny-hover { background-position: -641px 0; width: 31px; height: 38px; } 
+.icon.icon-bell-medium-hover { background-position: -692px 0; width: 68px; height: 80px; } 
+.icon.icon-bell-big-hover { background-position: -780px 0; } 
+.icon.icon-calendar-tiny-hover { background-position: -891px 0; width: 31px; height: 38px; } 
+.icon.icon-calendar-medium-hover { background-position: -942px 0; width: 68px; height: 80px; } 
+.icon.icon-calendar-big-hover { background-position: -1030px 0; } 
+.icon.icon-calendar-tiny { background-position: -1141px 0; width: 31px; height: 38px; } 
+.icon.icon-calendar-small { background-position: -1192px 0; width: 47px; height: 54px; } 
+.icon.icon-calendar-big { background-position: -1259px 0; } 
+.icon.icon-mail-small { background-position: -1370px 0; width: 47px; height: 54px; } 
+.icon.icon-facebook-footer { background-position: -1437px 0; width: 23px; height: 23px; } 
+.icon.icon-rss-feed-footer { background-position: -1480px 0; width: 23px; height: 23px; } 
+.icon.icon-weights-big { background-position: -1523px 0; } 
+.icon.icon-weights-big-hover { background-position: -1634px 0; } 
+.icon.icon-pregnant-big { background-position: -1745px 0; } 
+.icon.icon-pregnant-big-hover { background-position: -1856px 0; } 
+.icon.icon-child-big-hover { background-position: -1967px 0; } 
+.icon.icon-child-big { background-position: -2078px 0; } 
+.icon.icon-arrow-down { background-position: -2189px 0; width: 53px; height: 51px; } 
+.icon.icon-weekday-monday-smallish-48x56 { background-position: -2262px 0; width: 48px; height: 56px; } 
+.icon.icon-weekday-tuesday-smallish-48x56 { background-position: -2330px 0; width: 48px; height: 56px; } 
+.icon.icon-weekday-wednesday-smallish-48x56 { background-position: -2398px 0; width: 48px; height: 56px; } 
+.icon.icon-weekday-thursday-smallish-48x56 { background-position: -2466px 0; width: 48px; height: 56px; } 
+.icon.icon-weekday-friday-smallish-48x56 { background-position: -2534px 0; width: 48px; height: 56px; } 
+.icon.icon-rss-feed-inverted { background-position: -2602px 0; width: 23px; height: 23px; } 
+.icon.icon-arrow-right { background-position: -2645px 0; width: 17px; height: 9px; } 
